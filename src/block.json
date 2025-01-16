@@ -1,7 +1,7 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "b-blocks/test-purpose",
+	"name": "b-blocks/sweeper",
 	"version": "1.0.0",
 	"title": "Slider",
 	"category": "widgets",
@@ -21,17 +21,20 @@
 				{
 					"title": "Title 1",
 					"des":"description 1",
-                    "url": "https://i.ibb.co.com/Np4QV3C/dad4b6bb-772b-4c37-84ed-fff6bfca09f7.jpg"
+                    "url": "https://i.ibb.co.com/Np4QV3C/dad4b6bb-772b-4c37-84ed-fff6bfca09f7.jpg",
+					"tag":"h5"
 				},
 				{
 					"title": "Title 2",
 					"des":"description 2",
-                    "url": "https://i.ibb.co.com/J7NTDHJ/pexels-pixabay-280222.jpg"
+                    "url": "https://i.ibb.co.com/J7NTDHJ/pexels-pixabay-280222.jpg",
+					"tag":"h5"
 				},
 				{
 					"title": "Title 3",
 					"des":"description 3",
-                    "url": "https://i.ibb.co.com/FW8Yq12/laser-cinema.png"
+                    "url": "https://i.ibb.co.com/FW8Yq12/laser-cinema.png",
+					"tag":"h5"
 				}
 			]
 
@@ -73,7 +76,7 @@
 		},
 		"effectStyle":{
 			"type":"string",
-			"default":"flip"
+			"default":"fade"
 		}
 	
 		,

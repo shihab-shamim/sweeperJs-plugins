@@ -24,13 +24,26 @@ const Style = ({
     width,
     height,
     titleStyle,
-    descriptionStyle
+    descriptionStyle,
+    slider
   } = attributes;
   const mainSl = `#${id}`;
   const customSlide = `${mainSl} .custom-slide`;
-  const content = `${customSlide} .content`;
+  const container = `${mainSl} .container`;
+  const content = `${container} .content`;
   const title = `${content} .title`;
   const description = `${content} .description`;
+
+  // const sliderStyle=slider.map((slide,index)=>{
+  // 	const uniqeSliderStyle=`.container-${index}`;
+  // 	return `
+  //             ${uniqeSliderStyle} {
+  //             background-image: url(${slide.url});
+  //             background-size: cover;
+  //             background-position: center;
+  // 			`
+  // }).join("\n") || "";
+
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
     dangerouslySetInnerHTML: {
       __html: `
@@ -48,6 +61,8 @@ const Style = ({
 				color:${descriptionStyle?.color};
 				font-size:${descriptionStyle?.fontSize};
 				}
+			
+				
 			`
     }
   });
@@ -70,12 +85,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 
 const SweeperCard = ({
-  item
+  item,
+  index
 }) => {
+  const {
+    tag: Tags
+  } = item;
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "container",
+    className: `container container-${index}`,
     style: {
-      background: `url(${item.url}) rgba(112, 64, 92, 0.6)`,
+      background: `url(${item?.url}) rgba(112, 64, 92, 0.6)`,
       backgroundSize: 'cover',
       backgroundRepeat: 'no-repeat',
       backgroundPosition: 'center',
@@ -83,11 +102,11 @@ const SweeperCard = ({
     }
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "content"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h5", {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(Tags, {
     className: "title"
-  }, item.title), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+  }, item?.title), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     className: "description"
-  }, item.des))));
+  }, item?.des))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SweeperCard);
 
@@ -143,12 +162,13 @@ const Swipper = ({
     pagination: pagination,
     navigation: navigation,
     modules: [swiper_modules__WEBPACK_IMPORTED_MODULE_5__.Autoplay, swiper_modules__WEBPACK_IMPORTED_MODULE_5__.Navigation, swiper_modules__WEBPACK_IMPORTED_MODULE_5__.Pagination, swiper_modules__WEBPACK_IMPORTED_MODULE_5__.EffectFade, swiper_modules__WEBPACK_IMPORTED_MODULE_5__.EffectCube, swiper_modules__WEBPACK_IMPORTED_MODULE_5__.EffectCoverflow, swiper_modules__WEBPACK_IMPORTED_MODULE_5__.EffectFlip, swiper_modules__WEBPACK_IMPORTED_MODULE_5__.EffectCards],
-    key: autoplay,
+    key: [autoplay, slider],
     className: "mySwiper custom-slide"
   }, slider.map((item, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(swiper_react__WEBPACK_IMPORTED_MODULE_1__.SwiperSlide, {
-    key: index
+    key: [index, slider]
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_SweeperCard__WEBPACK_IMPORTED_MODULE_6__["default"], {
-    item: item
+    item: item,
+    index: index
   })))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Swipper);
@@ -11670,7 +11690,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 document.addEventListener('DOMContentLoaded', () => {
-  const blockNameEls = document.querySelectorAll('.wp-block-b-blocks-test-purpose');
+  const blockNameEls = document.querySelectorAll('.wp-block-b-blocks-sweeper');
   blockNameEls.forEach(blockNameEl => {
     const attributes = JSON.parse(blockNameEl.dataset.attributes);
     const {

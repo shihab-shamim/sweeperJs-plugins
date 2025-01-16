@@ -1,14 +1,27 @@
 
 
 	const Style = ({ attributes, id }) => {
-		const { colors,width,height,titleStyle,descriptionStyle } = attributes;
+		const { colors,width,height,titleStyle,descriptionStyle,slider } = attributes;
 	
 		const mainSl = `#${id}`;
 		const customSlide = `${mainSl} .custom-slide`; 
-		const content=`${customSlide} .content`;
+		const container = `${mainSl} .container`; 
+		const content=`${container} .content`;
 		const title=`${content} .title`;
 		const description=`${content} .description`;
-	
+
+
+
+	// const sliderStyle=slider.map((slide,index)=>{
+	// 	const uniqeSliderStyle=`.container-${index}`;
+	// 	return `
+    //             ${uniqeSliderStyle} {
+    //             background-image: url(${slide.url});
+    //             background-size: cover;
+    //             background-position: center;
+	// 			`
+	// }).join("\n") || "";
+
 		return (
 		<style
 			dangerouslySetInnerHTML={{
@@ -27,6 +40,8 @@
 				color:${descriptionStyle?.color};
 				font-size:${descriptionStyle?.fontSize};
 				}
+			
+				
 			`,
 			}}
 		/>

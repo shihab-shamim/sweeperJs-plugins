@@ -5,7 +5,7 @@ import BlockName from './Components/Frontend/BlockName';
 import Swipper from './Components/Common/Swipper';
 
 document.addEventListener('DOMContentLoaded', () => {
-	const blockNameEls = document.querySelectorAll('.wp-block-b-blocks-test-purpose');
+	const blockNameEls = document.querySelectorAll('.wp-block-b-blocks-sweeper');
 	blockNameEls.forEach(blockNameEl => {
 		const attributes = JSON.parse(blockNameEl.dataset.attributes);
 		const {slider,pagination,autoplay,navigation,width,height,effectStyle}=attributes

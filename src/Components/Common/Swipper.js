@@ -31,13 +31,13 @@ const Swipper = ({slider,pagination,autoplay,navigation,effectStyle}) => {
         pagination={pagination}
         navigation={navigation}
         modules={[Autoplay, Navigation,Pagination,EffectFade,EffectCube,EffectCoverflow,EffectFlip,EffectCards]}
-      key={autoplay}
+      key={[autoplay,slider]}
         className="mySwiper custom-slide"
       >
         {
           slider.map((item, index) => (
-            <SwiperSlide  key={index}>
-              <SweeperCard item={item}></SweeperCard>
+            <SwiperSlide  key={[index,slider]}>
+              <SweeperCard item={item} index={index}></SweeperCard>
             </SwiperSlide>
           ))
         }

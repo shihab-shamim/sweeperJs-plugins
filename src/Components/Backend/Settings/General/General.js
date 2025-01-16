@@ -1,8 +1,7 @@
 import { __ } from '@wordpress/i18n';
 
-import { PanelBody,FormToggle ,ToggleControl,Button,SelectControl  } from '@wordpress/components';
-import { purposeTypeOptions } from '../../../../utils/options';
-import { updateData } from '../../../../utils/functions';
+import { PanelBody ,ToggleControl,Button,SelectControl,TextControl,TextareaControl, __experimentalInputControl as InputControl } from '@wordpress/components';
+import { MediaUpload } from '@wordpress/block-editor';
 
 
 const General = ({ attributes, setAttributes }) => {
@@ -12,7 +11,102 @@ const General = ({ attributes, setAttributes }) => {
 
   return (
    <>
-    <PanelBody className='bPlPanelBody' title={__('Purpose', 'b-blocks')} initialOpen={false}>
+    <PanelBody className='bPlPanelBody' title={__('Slides', 'b-blocks')} initialOpen={true}>
+
+{
+  slider&& slider.map((slide,index)=><PanelBody key={index} className='bPlPanelBody' title={__(`Slider-${index+1}`, 'b-blocks')} initialOpen={false}>
+    <TextControl
+	label="Slider Title"
+	value={slide.title }
+	onChange={ e =>{
+    const newSlider=[...slider]
+    newSlider[index]={...slide,title:e}
+    setAttributes({slider:newSlider})
+  }}
+	type="text"
+/>
+      
+<TextareaControl
+	label="Description"
+	rows={2}
+	value={ slide.des }
+  onChange={ e =>{
+    const newSlider=[...slider]
+    newSlider[index]={...slide,des:e}
+    setAttributes({slider:newSlider})
+  }}
+
+
+/>
+<InputControl
+                      label="Slide Image"
+                      labelPosition="top"
+                      value={slide?.url}
+                      type="url"
+                      onChange={(newImage) => {
+                        const updatedSlider = [...slider];
+                        updatedSlider[index] ={...slide,url:newImage};
+                        setAttributes({ slider: updatedSlider });
+                      }}
+                      
+                    />
+
+
+			<MediaUpload
+				onSelect={ ( media ) =>{
+          const newslider = [...slider];
+          newslider[index].url = media?.url;
+          setAttributes({ slider: newslider });
+          
+        
+        }
+					
+				}
+				allowedTypes={['image'] }
+				value={ slide.url }
+				render={ ( { open } ) => (
+					<Button onClick={ open } isPrimary>Upload Image</Button>
+				) }
+			/>
+
+<SelectControl
+	label={ __( 'Select Title tag:' ) }
+	value={ slide.tag } // e.g: value = [ 'a', 'c' ]
+	onChange={ ( user ) => {
+    const newSlider=[...slider]
+    newSlider[index]={...slide,tag:user}
+    setAttributes({slider:newSlider})
+  } }
+	options={ [
+		{ value: null, label: 'Select a User', disabled: true },
+		{ value: 'h1', label: 'User H1' },
+		{ value: 'p', label: 'User P' },
+		{ value: 'h2', label: 'User H2' },
+	] }
+/>
+	
+
+<br></br>
+  <Button isPrimary 
+  onClick={()=>{
+    const newSlider=[...slider]
+    const filterSlider=newSlider.filter((sliders,i)=>i !==index)
+    setAttributes({slider:filterSlider})
+  }}
+  >Delete</Button>
+
+  <Button 
+  isPrimary
+  onClick={()=>{
+    const newFunctions = [...slider];
+    
+    newFunctions.splice(index + 1, 0, newFunctions[index]);
+    setAttributes({slider:newFunctions});
+  }}
+  >Duplicate</Button>
+
+  </PanelBody>)
+}
      
 
 
@@ -76,15 +170,22 @@ const General = ({ attributes, setAttributes }) => {
 
      <Button
      onClick={()=>{
-      const slide={
-        title: `Title ${slider.length+1}`,
-        des:`description ${slider.length+1}`,
-      url: "https://i.ibb.co.com/J7NTDHJ/pexels-pixabay-280222.jpg"
-      }
-      setAttributes({slider:[...slider,slide]})
+     const newSlider = {
+       title:`Title-${slider.length+1}`,
+       des:`Descroption-${slider.length+1}`,
+       url: 'https://images.unsplash.com/photo-1736251513671-3175c0896fb0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      tag:'h5'
+     }
+     setAttributes({slider:[...slider,newSlider]})
+      
+     
 
      }}
-      isPrimary>Add Slider</Button>
+      variant='primary'>Add Slider</Button>
+
+    
+
+      
 
 
    

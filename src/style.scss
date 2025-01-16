@@ -1,6 +1,6 @@
 $primaryColor: #4527a4;
 
-.wp-block-b-blocks-test-purpose {
+.wp-block-b-blocks-sweeper {
 	box-sizing: border-box;
 
 	* {
@@ -30,6 +30,10 @@ $primaryColor: #4527a4;
 	padding: 0px 20px;
 	width: 100%;
 	height: 100%;
+	// background-size: cover;
+    // background-repeat: no-repeat;
+    // background-position: center;
+    // background-blend-mode: multiply;
 }
 .content{
 	width: 100%;
