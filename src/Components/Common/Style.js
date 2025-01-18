@@ -1,11 +1,11 @@
 
 
 	const Style = ({ attributes, id }) => {
-		const { colors,width,height,titleStyle,descriptionStyle,slider } = attributes;
+		const { colors,width,height,titleStyle,descriptionStyle,contentAlignment } = attributes;
 	
 		const mainSl = `#${id}`;
 		const customSlide = `${mainSl} .custom-slide`; 
-		const container = `${mainSl} .container`; 
+		const container = `${customSlide} .container`; 
 		const content=`${container} .content`;
 		const title=`${content} .title`;
 		const description=`${content} .description`;
@@ -27,18 +27,27 @@
 			dangerouslySetInnerHTML={{
 			__html: `
 				${customSlide} {
-				width:${width};
-				height:${height};
-				background-color: ${colors?.background || "transparent"};
+					width:${width};
+					height:${height};
+					background-color: ${colors?.background || "transparent"};
 				}
+
+				${content}{
+					
+					display:flex;
+					justify-content:${contentAlignment.horizontally};
+					align-items:${contentAlignment.vertically};
+
+				}
+
 				${title} {
-                color:${titleStyle?.color};
-				font-size:${titleStyle?.fontSize};
+					color:${titleStyle?.color};
+					font-size:${titleStyle?.fontSize};
 				
                 }
 				${description}{
-				color:${descriptionStyle?.color};
-				font-size:${descriptionStyle?.fontSize};
+					color:${descriptionStyle?.color};
+					font-size:${descriptionStyle?.fontSize};
 				}
 			
 				

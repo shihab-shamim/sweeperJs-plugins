@@ -16,7 +16,7 @@ const Edit = (props) => {
 
       <div {...useBlockProps()}  id={`block-${clientId}`}>
         <Style width={width} height={height} attributes={attributes} id={`block-${clientId}`} />
-    <Swipper slider={slider} pagination={pagination} autoplay={autoplay} navigation={navigation} effectStyle={effectStyle}></Swipper>
+        <Swipper slider={slider} pagination={pagination} autoplay={autoplay} navigation={navigation} effectStyle={effectStyle}></Swipper>
   
       </div>
     </>

@@ -21,19 +21,19 @@
         {
           "title": "Title 1",
           "des": "description 1",
-          "url": "https://i.ibb.co.com/Np4QV3C/dad4b6bb-772b-4c37-84ed-fff6bfca09f7.jpg",
+          "url": "https://images.unsplash.com/photo-1736182792109-2db1c298a703?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
           "tag": "h5"
         },
         {
           "title": "Title 2",
           "des": "description 2",
-          "url": "https://i.ibb.co.com/J7NTDHJ/pexels-pixabay-280222.jpg",
+          "url": "https://images.unsplash.com/photo-1735506266367-d6941df3efdc?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
           "tag": "h5"
         },
         {
           "title": "Title 3",
           "des": "description 3",
-          "url": "https://i.ibb.co.com/FW8Yq12/laser-cinema.png",
+          "url": "https://images.unsplash.com/photo-1736187946447-7a61130fd7eb?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
           "tag": "h5"
         }
       ]
@@ -76,9 +76,12 @@
       "type": "string",
       "default": "fade"
     },
-    "purposeType": {
-      "type": "string",
-      "default": "test"
+    "contentAlignment": {
+      "type": "object",
+      "default": {
+        "horizontally": "center",
+        "vertically": "center"
+      }
     },
     "colors": {
       "type": "object",

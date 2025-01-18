@@ -2,6 +2,7 @@ import { __ } from '@wordpress/i18n';
 
 import { PanelBody ,ToggleControl,Button,SelectControl,TextControl,TextareaControl, __experimentalInputControl as InputControl } from '@wordpress/components';
 import { MediaUpload } from '@wordpress/block-editor';
+import { Flex } from '@wordpress/components';
 
 
 const General = ({ attributes, setAttributes }) => {
@@ -87,6 +88,7 @@ const General = ({ attributes, setAttributes }) => {
 	
 
 <br></br>
+  <Flex justify='space-between'>
   <Button isPrimary 
   onClick={()=>{
     const newSlider=[...slider]
@@ -104,6 +106,7 @@ const General = ({ attributes, setAttributes }) => {
     setAttributes({slider:newFunctions});
   }}
   >Duplicate</Button>
+  </Flex>
 
   </PanelBody>)
 }
@@ -115,6 +118,7 @@ const General = ({ attributes, setAttributes }) => {
 
 
      <ToggleControl
+     className='autoPlay'
 	label="Show Pagination"
 	// help={ true ? 'Has fixed background.' : 'No fixed background.' }
 	checked={ pagination }
@@ -124,6 +128,7 @@ const General = ({ attributes, setAttributes }) => {
     } }
 />
 <ToggleControl
+className='autoPlay'
 	label="Show Navigation Button"
 	// help={ true ? 'Has fixed background.' : 'No fixed background.' }
 	checked={ navigation }
@@ -138,6 +143,7 @@ const General = ({ attributes, setAttributes }) => {
 
      
    <ToggleControl
+   className='autoPlay'
 	label="Auto Play"
 	// help={ true ? 'Has fixed background.' : 'No fixed background.' }
 	checked={ autoplay }
@@ -154,6 +160,7 @@ const General = ({ attributes, setAttributes }) => {
      
      <SelectControl
   // fade,coverflow,flip,creative,cards
+  className='autoPlay'
 
 	label={ __( 'Select Your Effect' ) }
 	value={ effectStyle } 
@@ -168,7 +175,9 @@ const General = ({ attributes, setAttributes }) => {
 	] }
 />
 
-     <Button
+ <div>
+ <Button
+     
      onClick={()=>{
      const newSlider = {
        title:`Title-${slider.length+1}`,
@@ -182,6 +191,7 @@ const General = ({ attributes, setAttributes }) => {
 
      }}
       variant='primary'>Add Slider</Button>
+ </div>
 
     
 

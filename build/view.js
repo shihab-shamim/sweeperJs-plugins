@@ -25,11 +25,11 @@ const Style = ({
     height,
     titleStyle,
     descriptionStyle,
-    slider
+    contentAlignment
   } = attributes;
   const mainSl = `#${id}`;
   const customSlide = `${mainSl} .custom-slide`;
-  const container = `${mainSl} .container`;
+  const container = `${customSlide} .container`;
   const content = `${container} .content`;
   const title = `${content} .title`;
   const description = `${content} .description`;
@@ -48,18 +48,27 @@ const Style = ({
     dangerouslySetInnerHTML: {
       __html: `
 				${customSlide} {
-				width:${width};
-				height:${height};
-				background-color: ${colors?.background || "transparent"};
+					width:${width};
+					height:${height};
+					background-color: ${colors?.background || "transparent"};
 				}
+
+				${content}{
+					
+					display:flex;
+					justify-content:${contentAlignment.horizontally};
+					align-items:${contentAlignment.vertically};
+
+				}
+
 				${title} {
-                color:${titleStyle?.color};
-				font-size:${titleStyle?.fontSize};
+					color:${titleStyle?.color};
+					font-size:${titleStyle?.fontSize};
 				
                 }
 				${description}{
-				color:${descriptionStyle?.color};
-				font-size:${descriptionStyle?.fontSize};
+					color:${descriptionStyle?.color};
+					font-size:${descriptionStyle?.fontSize};
 				}
 			
 				
@@ -95,10 +104,10 @@ const SweeperCard = ({
     className: `container container-${index}`,
     style: {
       background: `url(${item?.url}) rgba(112, 64, 92, 0.6)`,
-      backgroundSize: 'cover',
-      backgroundRepeat: 'no-repeat',
-      backgroundPosition: 'center',
-      backgroundBlendMode: 'multiply'
+      backgroundSize: "cover",
+      backgroundRepeat: "no-repeat",
+      backgroundPosition: "center",
+      backgroundBlendMode: "multiply"
     }
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "content"
@@ -162,7 +171,7 @@ const Swipper = ({
     pagination: pagination,
     navigation: navigation,
     modules: [swiper_modules__WEBPACK_IMPORTED_MODULE_5__.Autoplay, swiper_modules__WEBPACK_IMPORTED_MODULE_5__.Navigation, swiper_modules__WEBPACK_IMPORTED_MODULE_5__.Pagination, swiper_modules__WEBPACK_IMPORTED_MODULE_5__.EffectFade, swiper_modules__WEBPACK_IMPORTED_MODULE_5__.EffectCube, swiper_modules__WEBPACK_IMPORTED_MODULE_5__.EffectCoverflow, swiper_modules__WEBPACK_IMPORTED_MODULE_5__.EffectFlip, swiper_modules__WEBPACK_IMPORTED_MODULE_5__.EffectCards],
-    key: [autoplay, slider],
+    key: autoplay,
     className: "mySwiper custom-slide"
   }, slider.map((item, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(swiper_react__WEBPACK_IMPORTED_MODULE_1__.SwiperSlide, {
     key: [index, slider]

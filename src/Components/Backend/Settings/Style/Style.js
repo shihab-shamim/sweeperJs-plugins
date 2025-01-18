@@ -85,6 +85,19 @@ onChange={(color)=>setAttributes({descriptionStyle:{...descriptionStyle,color:co
 
       
     </PanelBody>
+
+    <PanelBody
+      
+      className="bPlPanelBody"
+      title={__("Slider-Content-Alignment", "b-blocks")}
+      initialOpen={false}
+>
+  
+ 
+
+      
+    </PanelBody>
+
       
 
     </>

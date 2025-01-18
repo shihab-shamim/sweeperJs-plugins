@@ -15,7 +15,7 @@ import SweeperCard from './SweeperCard';
 const Swipper = ({slider,pagination,autoplay,navigation,effectStyle}) => {
 
 
-  const autoplayOptions =autoplay? {
+  const autoplayOptions =autoplay?{
     delay: 2500,
     disableOnInteraction: false,
 
@@ -31,7 +31,7 @@ const Swipper = ({slider,pagination,autoplay,navigation,effectStyle}) => {
         pagination={pagination}
         navigation={navigation}
         modules={[Autoplay, Navigation,Pagination,EffectFade,EffectCube,EffectCoverflow,EffectFlip,EffectCards]}
-      key={[autoplay,slider]}
+      key={autoplay}
         className="mySwiper custom-slide"
       >
         {
