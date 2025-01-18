@@ -78,10 +78,10 @@ const General = ({ attributes, setAttributes }) => {
     setAttributes({slider:newSlider})
   } }
 	options={ [
-		{ value: null, label: 'Select a User', disabled: true },
-		{ value: 'h1', label: 'User H1' },
-		{ value: 'p', label: 'User P' },
-		{ value: 'h2', label: 'User H2' },
+		{ value: null, label: 'Select a Tags', disabled: true },
+		{ value: 'h1', label: ' H1' },
+		{ value: 'p', label: ' P' },
+		{ value: 'h2', label: ' H2' },
 	] }
 />
 	
